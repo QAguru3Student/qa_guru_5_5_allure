@@ -12,7 +12,7 @@ import static io.qameta.allure.Allure.step;
 public class GitHubStepsTest {
     private final String BASE_URL = "https://github.com";
     private final static String REPOSITORY = "allure-framework/allure2";
-    private final static String ISSUE_NAME = "Allure Report Customization";
+    private final static String ISSUE_NAME = "Can not generate Allure Reports on Jenkins";
 
     @Test
     public void searchForIssue() {
@@ -28,11 +28,11 @@ public class GitHubStepsTest {
         });
 
         step("Перейти в Issues", () -> {
-            $(withText("Issues")).click();
+            $("#issues-tab").click();
         });
 
         step("Проверить название Issue", () -> {
-            $(withText(ISSUE_NAME)).should(Condition.exist);
+            $(withText(ISSUE_NAME)).should(Condition.visible);
         });
     }
 }

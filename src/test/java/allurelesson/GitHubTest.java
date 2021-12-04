@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class GitHubTest {
     private final String BASE_URL = "https://github.com";
     private final static String REPOSITORY = "allure-framework/allure2";
-    private final static String ISSUE_NAME = "Allure Report Customization";
+    private final static String ISSUE_NAME = "Can not generate Allure Reports on Jenkins";
 
     @Test
     public void searchForIssue() {
@@ -26,9 +26,9 @@ public class GitHubTest {
         $(By.linkText(REPOSITORY)).click();
 
         //Перейти в Issues
-        $(withText("Issues")).click();
+        $("#issues-tab").click();
 
         //Проверить название Issue
-        $(withText(ISSUE_NAME)).should(Condition.exist);
+        $(withText(ISSUE_NAME)).should(Condition.visible);
     }
 }

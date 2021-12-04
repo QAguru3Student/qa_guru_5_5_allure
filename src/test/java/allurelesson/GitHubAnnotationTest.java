@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class GitHubAnnotationTest {
     private final static String BASE_URL = "https://github.com";
     private final static String REPOSITORY = "allure-framework/allure2";
-    private final static String ISSUE_NAME = "Allure Report Customization";
+    private final static String ISSUE_NAME = "Can not generate Allure Reports on Jenkins";
 
 
     @Test
@@ -32,7 +32,7 @@ public class GitHubAnnotationTest {
     }
 
     public static class  BaseSteps{
-        @Step("Открыть главную страницу {name}")
+        @Step("Открыть главную страницу")
         public void openMainPage(final String name) {
             open(BASE_URL);
         }
@@ -47,12 +47,12 @@ public class GitHubAnnotationTest {
 
         @Step("Перейти в Issues")
         public void goToIssue() {
-            $(withText("Issues")).click();
+            $("#issues-tab").click();
         }
 
         @Step("Проверить название Issue {name}")
         public void checkTitleIssue(final String name) {
-            $(withText(ISSUE_NAME)).should(Condition.exist);
+            $(withText(ISSUE_NAME)).should(Condition.visible);
         }
     }
 }
